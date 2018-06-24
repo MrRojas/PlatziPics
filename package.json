@@ -4,6 +4,7 @@
   "description": "\"Una app para practicar electron js\"",
   "main": "index.js",
   "scripts": {
+    "dev": "electron index.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -18,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/MrRojas/PlatziPics/issues"
   },
-  "homepage": "https://github.com/MrRojas/PlatziPics#readme"
+  "homepage": "https://github.com/MrRojas/PlatziPics#readme",
+  "dependencies": {
+    "electron": "^2.0.3"
+  }
 }
