@@ -116,3 +116,93 @@ El objeto  **BrowserWindow** es el que nos permite cargar todo el contenido visu
         "electron": "^2.0.3"
       }
     }
+
+# Paso 6: 
+
+## Para realizar una ventana debemos llamar a la variable :
+
+**BrowserWindow** el cual me permite realizar la llamada a una ventana, ademas de cargar paginas web, tambien se integra otro tipo de eventos como **once** y  **ready-to-show**
+
+### Ejemplo en clase: 
+
+
+    'use strict'
+    
+    const { app  , BrowserWindow } = require ('electron')
+    
+    
+    
+    // app.on es para escuchar un evento 
+    // ready es estilo JQUERY
+    app.on('ready', () =>{
+    
+    
+    	// se pasa un array con ciertoa atributo
+    	let win = new BrowserWindow({
+    		width : 800,
+    		height : 600,
+    		title : 'Hola Mundo',
+    		center: true,
+    		show : false 
+    
+    	})
+    
+    
+    	// saber la posicion de la ventana 
+    
+    	win.on('move' ,  () =>{
+    		const position = win.getPosition()
+    		console.log( `La posicion es ${position } `)
+    	})
+    
+    
+    	// una vez listo el contenido se muestra la pantalla 
+    
+    	win.once('ready-to-show' , () => {
+    
+    		win.show()
+    	})
+    
+    
+    
+    	// escuchar el evento de cierre de ventana 
+    	win.on('closed' , () => {
+    		// liberar memoria 
+    		win = null 
+    		// cerrar la aplicacion 
+    		app.quit()
+    	} )
+    
+    
+    	// pagina a cargar 
+    	win.loadURL('http://devdocs.io/')
+    })
+
+
+
+# Estructura Basica de una App en electron Js 
+
+* src 
+  * assets
+    * css
+    * img
+  * render
+  * index.js
+* package.json
+
+# Herramientas de desarrollo para Electron
+
+## Configurando nuestro frontend
+
+El proyecto electron-compile, nos permite escribir en diferentes tecnologías que no están soportadas nativamente en HTML y compila el código
+en tiempo de ejecución.
+
+En Windows instalemos la herramienta **cross-env** que nos permite que las variables de entorno que configuremos en package.json sean iguales para Windows, Linux y Mac.
+
+
+npm install cross-env --save
+
+
+# Luego de Haber cambiado a electron-compile...
+
+## podemos usar import de la siguiente manera 
