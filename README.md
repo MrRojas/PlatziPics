@@ -129,3 +129,67 @@ Se usa para mantener el estandar en windows de las variables estilo mac y linux
       "devDependencies": {
         "electron-prebuilt-compile": "^2.0.3"
       }
+
+# Mantener el codigo standar 
+
+```
+npm install standard --save-dev
+```
+
+
+## Por lo tanto debe quedar asi:
+
+    {
+      "name": "platzipics",
+      "version": "1.0.0",
+      "description": "\"Una app para practicar electron js\"",
+      "main": "index.js",
+      "scripts": {
+        "dev": "cross-env NODE_ENV=development electron src/index.js",
+        "lint" : "standard",
+        "test": "echo \"Error: no test specified\" && exit 1"
+      },
+      "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MrRojas/PlatziPics.git"
+      },
+      "keywords": [
+        "armando_rojas"
+      ],
+      "author": "Armando Jose Rojas Querales",
+      "license": "MIT",
+      "bugs": {
+        "url": "https://github.com/MrRojas/PlatziPics/issues"
+      },
+      "homepage": "https://github.com/MrRojas/PlatziPics#readme",
+      "dependencies": {
+        "cross-env": "^5.2.0",
+        "electron-compile": "^6.4.3"
+      },
+      "devDependencies": {
+        "electron-prebuilt-compile": "^2.0.3",
+        "standard": "^11.0.1"
+      }
+    }
+
+# Activar el Devtools
+
+### Se puede realizar de manera directa con win.toogleDevTools()
+
+### O instalando: 
+
+ npm i electron-debug -S
+
+### Quedando nuestro devtools.js asi:
+
+    import {enableLiveReload} from 'electron-compile'
+    import electronDebug from 'electron-debug'
+    
+    module.exports = function devtools(){
+    	enableLiveReload()
+    	electronDebug({showDevTools: true})
+    }
+
+# Devtron son las herramientas oficiales de Electron para hacer debug.
+
+npm install --save-dev devtron
